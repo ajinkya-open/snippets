@@ -1,0 +1,43 @@
+{
+  "snip_block": {
+    "prefix": "snip_block",
+    "body": [
+      "{% block content %}",
+      "{% endblock %}"
+    ]
+  },
+  "snip_extend": {
+    "prefix": "snip_extend",
+    "body": [
+      "{%extends 'base.html' %}"
+    ]
+  },
+  "snip_for": {
+    "prefix": "snip_for",
+    "body": [
+      "{% for i in $1 %}",
+      "",
+      "",
+      "",
+      "{% endfor %}"
+    ]
+  },
+  "snip_var": {
+    "prefix": "snip_var",
+    "body": [
+      "{{$1}}"
+    ]
+  },
+  "snip_code": {
+    "prefix": "snip_code",
+    "body": [
+      "{%$1%}"
+    ]
+  },
+  "snip_a": {
+    "prefix": "snip_a",
+    "body": [
+      "<a href='{% url '$1' ${2:[KEY]}%}'>$3</a>"
+    ]
+  }
+}

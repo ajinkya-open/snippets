@@ -1,0 +1,17 @@
+{
+  "snip_arduino": {
+    "prefix": "snip_arduino",
+    "body": [
+      "#include<Arduino.h>",
+      "",
+      "void setup(){",
+      "",
+      "",
+      "}",
+      "void loop(){",
+      "",
+      "",
+      "}"
+    ]
+  }
+}

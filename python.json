@@ -1,0 +1,1095 @@
+{
+  "snip_path": {
+    "prefix": "snip_path",
+    "body": [
+      "path($1,$2,$3)"
+    ]
+  },
+  "snip_include": {
+    "prefix": "snip_include",
+    "body": [
+      "path('$1',include('$2')),"
+    ]
+  },
+  "snip_url": {
+    "prefix": "snip_url",
+    "body": [
+      "from django.urls import path",
+      "",
+      "urlpatterns=[",
+      "$1",
+      "]",
+      ""
+    ]
+  },
+  "snip_static_set": {
+    "prefix": "snip_static_set",
+    "body": [
+      "STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))] # new"
+    ]
+  },
+  "snip_im_screen": {
+    "prefix": "snip_im_screen",
+    "body": [
+      "from screens.$1 import $2"
+    ]
+  },
+  "snip_absolute_url": {
+    "prefix": "snip_absolute_url",
+    "body": [
+      "\tdef get_absolute_url(self):",
+      "\t\treturn reverse('$1',args=[str(self.id)])"
+    ]
+  },
+  "snip_kivy_app_template": {
+    "prefix": "snip_kivy_app_template",
+    "body": [
+      "from kivy.config import Config",
+      "from kivymd.app import MDApp",
+      "from kivy.uix.screenmanager import ScreenManager",
+      "",
+      "",
+      "from kivy.core.window import Window",
+      "Window.softinput_mode = \"below_target\"",
+      "",
+      "",
+      "class MainApp(MDApp):",
+      "    '''",
+      "    Main ",
+      "    '''",
+      "    sm=ScreenManager()",
+      "",
+      "",
+      "    def build(self):",
+      "        ",
+      "        return self.sm",
+      "",
+      "",
+      "",
+      "",
+      "if __name__=='__main__':",
+      "    app=MainApp()",
+      "    app.run()",
+      ""
+    ]
+  },
+  "snip_lic": {
+    "prefix": "snip_lic",
+    "body": [
+      "'''",
+      "@ajikya kohokade",
+      "Module $1",
+      "Feature : ",
+      "$2",
+      "",
+      "",
+      "",
+      "'''",
+      "$3"
+    ]
+  },
+  "snip_serializer": {
+    "prefix": "snip_serializer",
+    "body": [
+      "class $1_Serializer(serializers.ModelSerializer):",
+      "    class Meta:",
+      "        fields='__all__'",
+      "        model=$1"
+    ]
+  },
+  "snip_viewset": {
+    "prefix": "snip_viewset",
+    "body": [
+      "class $1_viewset(viewsets.ModelViewSet):",
+      "    queryset=$1.objects.all()",
+      "    serializer_class= $1_Serializer"
+    ]
+  },
+  "snip_screen": {
+    "prefix": "snip_screen",
+    "body": [
+      "class $1(Screen):",
+      "    def __init__(self, **kw):",
+      "        Builder.load_file('./kv/$2.kv')",
+      "        Clock.schedule_once(self.load_screen)",
+      "        super().__init__(**kw)",
+      "",
+      "    def on_leave(self, *args):",
+      "        Builder.unload_file('./kv/$2.kv')",
+      "        return super().on_leave(*args)",
+      "",
+      "    def load_screen(self,*args):",
+      "        pass",
+      ""
+    ]
+  },
+  "snip_screen_lib": {
+    "prefix": "snip_screen_lib",
+    "body": [
+      "from kivy.lang.builder import Builder",
+      "from kivy.uix.screenmanager import Screen",
+      "from kivy.clock import Clock",
+      "",
+      ""
+    ]
+  },
+  "snip_router_register": {
+    "prefix": "snip_router_register",
+    "body": [
+      "router.register('$1',$2_viewset,basename='$3')"
+    ]
+  },
+  "snip_rest_frame_set": {
+    "prefix": "snip_rest_frame_set",
+    "body": [
+      "REST_FRAMEWORK = {",
+      "#'DEFAULT_PERMISSION_CLASSES': [",
+      "#'rest_framework.permissions.IsAuthenticated',",
+      "#],",
+      "",
+      "'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema', ",
+      "'DEFAULT_AUTHENTICATION_CLASSES': [ # new",
+      "'rest_framework.authentication.SessionAuthentication',",
+      "'rest_framework.authentication.TokenAuthentication'",
+      "],",
+      "}",
+      ""
+    ]
+  },
+  "snip_email_set": {
+    "prefix": "snip_email_set",
+    "body": [
+      "EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'"
+    ]
+  },
+  "snip_ad_reg": {
+    "prefix": "snip_ad_reg",
+    "body": [
+      "admin.site.register($0)"
+    ]
+  },
+  "snip_admin_urls": {
+    "prefix": "snip_admin_urls",
+    "body": [
+      "    path('logic/',include('logic.urls')),",
+      "    path('api/',include('api.urls')),",
+      "",
+      "    path('allauth/',include('allauth.urls')),",
+      "    path('rest_auth/',include('rest_auth.urls')),",
+      "    path('registration/',include('rest_auth.registration.urls')),",
+      "    ",
+      "    path('docs/',include_docs_urls(title='docs'))"
+    ]
+  },
+  "snip_installed_apps": {
+    "prefix": "snip_installed_apps",
+    "body": [
+      "",
+      "#sites\t",
+      "'django.contrib.sites',",
+      "#local",
+      "'logic',",
+      "'api',",
+      "",
+      "",
+      "#third party",
+      "'rest_auth',",
+      "'rest_auth.registration',",
+      "'rest_framework',",
+      "'rest_framework.authtoken',",
+      "'allauth',",
+      "'allauth.account',",
+      "'allauth.socialaccount',",
+      "",
+      ""
+    ]
+  },
+  "%": {
+    "prefix": "%",
+    "body": [
+      "{% ${1} %}${2}"
+    ]
+  },
+  "%%": {
+    "prefix": "%%",
+    "body": [
+      "{% ${1:tag_name} %}",
+      "  ${2}",
+      "{% end$1 %}"
+    ]
+  },
+  "{": {
+    "prefix": "{",
+    "body": [
+      "{{ ${1} }}${2}"
+    ]
+  },
+  "autoescape": {
+    "prefix": "autoescape",
+    "body": [
+      "{% autoescape ${1:off} %}",
+      "  ${2}",
+      "{% endautoescape %}"
+    ]
+  },
+  "block": {
+    "prefix": "block",
+    "body": [
+      "{% block ${1} %}",
+      "  ${2}",
+      "{% endblock %}"
+    ]
+  },
+  "#": {
+    "prefix": "#",
+    "body": [
+      "{# ${1:comment} #}"
+    ]
+  },
+  "comment": {
+    "prefix": "comment",
+    "body": [
+      "{% comment %}",
+      "  ${1}",
+      "{% endcomment %}"
+    ]
+  },
+  "cycle": {
+    "prefix": "cycle",
+    "body": [
+      "{% cycle ${1:val1} ${2:val2} ${3:as ${4}} %}"
+    ]
+  },
+  "debug": {
+    "prefix": "debug",
+    "body": [
+      "{% debug %}"
+    ]
+  },
+  "extends": {
+    "prefix": "extends",
+    "body": [
+      "{% extends \"${1:base.html}\" %}"
+    ]
+  },
+  "filter": {
+    "prefix": "filter",
+    "body": [
+      "{% filter ${1} %}",
+      "  ${2}",
+      "{% endfilter %}"
+    ]
+  },
+  "firstof": {
+    "prefix": "firstof",
+    "body": [
+      "{% firstof ${1} %}"
+    ]
+  },
+  "for": {
+    "prefix": "for",
+    "body": [
+      "{% for ${1} in ${2} %}",
+      "  ${3}",
+      "{% endfor %}"
+    ]
+  },
+  "empty": {
+    "prefix": "empty",
+    "body": [
+      "{% empty %}",
+      "  ${1}"
+    ]
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "{% if ${1} %}",
+      "  ${2}",
+      "{% endif %}"
+    ]
+  },
+  "else": {
+    "prefix": "else",
+    "body": [
+      "{% else %}",
+      "  ${1}"
+    ]
+  },
+  "ifchanged": {
+    "prefix": "ifchanged",
+    "body": [
+      "{% ifchanged %}${1}{% endifchanged %}"
+    ]
+  },
+  "ifequal": {
+    "prefix": "ifequal",
+    "body": [
+      "{% ifequal ${1} ${2} %}",
+      "  ${3}",
+      "{% endifequal %}"
+    ]
+  },
+  "ifnotequal": {
+    "prefix": "ifnotequal",
+    "body": [
+      "{% ifnotequal ${1} ${2} %}",
+      "  ${3}",
+      "{% endifnotequal %}"
+    ]
+  },
+  "include": {
+    "prefix": "include",
+    "body": [
+      "{% include \"${1}\" %}"
+    ]
+  },
+  "load": {
+    "prefix": "load",
+    "body": [
+      "{% load ${1} %}"
+    ]
+  },
+  "now": {
+    "prefix": "now",
+    "body": [
+      "{% now \"${1:jS F Y H:i}\" %}"
+    ]
+  },
+  "regroup": {
+    "prefix": "regroup",
+    "body": [
+      "{% regroup ${1} by ${2} as ${3} %}"
+    ]
+  },
+  "spaceless": {
+    "prefix": "spaceless",
+    "body": [
+      "{% spaceless %}${1}{% endspaceless %}"
+    ]
+  },
+  "ssi": {
+    "prefix": "ssi",
+    "body": [
+      "{% ssi ${1} %}"
+    ]
+  },
+  "trans": {
+    "prefix": "trans",
+    "body": [
+      "{% trans \"${1:string}\" %}"
+    ]
+  },
+  "url": {
+    "prefix": "url",
+    "body": [
+      "{% url ${1} as ${2} %}"
+    ]
+  },
+  "widthratio": {
+    "prefix": "widthratio",
+    "body": [
+      "{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}"
+    ]
+  },
+  "with": {
+    "prefix": "with",
+    "body": [
+      "{% with ${1} as ${2} %}"
+    ]
+  },
+  "add": {
+    "prefix": "add",
+    "body": [
+      "add:\"${1}\""
+    ]
+  },
+  "center": {
+    "prefix": "center",
+    "body": [
+      "center:\"${1}\""
+    ]
+  },
+  "cut": {
+    "prefix": "cut",
+    "body": [
+      "cut:\"${1}\""
+    ]
+  },
+  "date": {
+    "prefix": "date",
+    "body": [
+      "date:\"${1}\""
+    ]
+  },
+  "default": {
+    "prefix": "default",
+    "body": [
+      "default:\"${1}\""
+    ]
+  },
+  "defaultifnone": {
+    "prefix": "defaultifnone",
+    "body": [
+      "default_if_none:\"${1}\""
+    ]
+  },
+  "dictsort": {
+    "prefix": "dictsort",
+    "body": [
+      "dictsort:\"${1}\""
+    ]
+  },
+  "dictsortrev": {
+    "prefix": "dictsortrev",
+    "body": [
+      "dictsortreversed:\"${1}\""
+    ]
+  },
+  "divisibleby": {
+    "prefix": "divisibleby",
+    "body": [
+      "divisibleby:\"${1}\""
+    ]
+  },
+  "floatformat": {
+    "prefix": "floatformat",
+    "body": [
+      "floatformat:\"${1}\""
+    ]
+  },
+  "getdigit": {
+    "prefix": "getdigit",
+    "body": [
+      "get_digit:\"${1}\""
+    ]
+  },
+  "join": {
+    "prefix": "join",
+    "body": [
+      "join:\"${1}\""
+    ]
+  },
+  "lengthis": {
+    "prefix": "lengthis",
+    "body": [
+      "length_is:\"${1}\""
+    ]
+  },
+  "pluralize": {
+    "prefix": "pluralize",
+    "body": [
+      "pluralize:\"${1}\""
+    ]
+  },
+  "removetags": {
+    "prefix": "removetags",
+    "body": [
+      "removetags:\"${1}\""
+    ]
+  },
+  "slice": {
+    "prefix": "slice",
+    "body": [
+      "slice:\"${1}\""
+    ]
+  },
+  "stringformat": {
+    "prefix": "stringformat",
+    "body": [
+      "stringformat:\"${1}\""
+    ]
+  },
+  "time": {
+    "prefix": "time",
+    "body": [
+      "time:\"${1}\""
+    ]
+  },
+  "truncatewords": {
+    "prefix": "truncatewords",
+    "body": [
+      "truncatewords:${1}"
+    ]
+  },
+  "truncatewordshtml": {
+    "prefix": "truncatewordshtml",
+    "body": [
+      "truncatewords_html:${1}"
+    ]
+  },
+  "urlizetrunc": {
+    "prefix": "urlizetrunc",
+    "body": [
+      "urlizetrunc:${1}"
+    ]
+  },
+  "wordwrap": {
+    "prefix": "wordwrap",
+    "body": [
+      "wordwrap:${1}"
+    ]
+  },
+  "form": {
+    "prefix": "form",
+    "description": "Form",
+    "body": [
+      "class ${1:FORMNAME}(forms.Form):",
+      "",
+      "\t${2:# TODO: Define form fields here}"
+    ]
+  },
+  "modelform": {
+    "prefix": "modelform",
+    "description": "ModelForm",
+    "body": [
+      "class ${1:MODELNAME}Form(forms.ModelForm):",
+      "",
+      "\tclass Meta:",
+      "\t\tmodel = $1"
+    ]
+  },
+  "fbool": {
+    "prefix": "fbool",
+    "description": "BooleanField",
+    "body": [
+      "${1:FIELDNAME} = forms.BooleanField($2)"
+    ]
+  },
+  "fchar": {
+    "prefix": "fchar",
+    "description": "CharField",
+    "body": [
+      "${1:FIELDNAME} = forms.CharField($2)"
+    ]
+  },
+  "fchoice": {
+    "prefix": "fchoice",
+    "description": "ChoiceField",
+    "body": [
+      "${1:FIELDNAME} = forms.ChoiceField($2)"
+    ]
+  },
+  "fcombo": {
+    "prefix": "fcombo",
+    "description": "ComboField",
+    "body": [
+      "${1:FIELDNAME} = forms.ComboField($2)"
+    ]
+  },
+  "fdate": {
+    "prefix": "fdate",
+    "description": "DateField",
+    "body": [
+      "${1:FIELDNAME} = forms.DateField($2)"
+    ]
+  },
+  "fdatetime": {
+    "prefix": "fdatetime",
+    "description": "DateTimeField",
+    "body": [
+      "${1:FIELDNAME} = forms.DateTimeField($2)"
+    ]
+  },
+  "fdecimal": {
+    "prefix": "fdecimal",
+    "description": "DecimalField",
+    "body": [
+      "${1:FIELDNAME} = forms.DecimalField($2)"
+    ]
+  },
+  "fmail": {
+    "prefix": "fmail",
+    "description": "EmailField",
+    "body": [
+      "${1:FIELDNAME} = forms.EmailField($2)"
+    ]
+  },
+  "ffile": {
+    "prefix": "ffile",
+    "description": "FileField",
+    "body": [
+      "${1:FIELDNAME} = forms.FileField($2)"
+    ]
+  },
+  "ffilepath": {
+    "prefix": "ffilepath",
+    "description": "FilePathField",
+    "body": [
+      "${1:FIELDNAME} = forms.FilePathField($2)"
+    ]
+  },
+  "ffloat": {
+    "prefix": "ffloat",
+    "description": "FloatField",
+    "body": [
+      "${1:FIELDNAME} = forms.FloatField($2)"
+    ]
+  },
+  "fip": {
+    "prefix": "fip",
+    "description": "IPAddressField",
+    "body": [
+      "${1:FIELDNAME} = forms.IPAddressField($2)"
+    ]
+  },
+  "fimg": {
+    "prefix": "fimg",
+    "description": "ImageField",
+    "body": [
+      "${1:FIELDNAME} = forms.ImageField($2)"
+    ]
+  },
+  "fint": {
+    "prefix": "fint",
+    "description": "IntegerField",
+    "body": [
+      "${1:FIELDNAME} = forms.IntegerField($2)"
+    ]
+  },
+  "fmochoice": {
+    "prefix": "fmochoice",
+    "description": "ModelChoiceField",
+    "body": [
+      "${1:FIELDNAME} = forms.ModelChoiceField($2)"
+    ]
+  },
+  "fmomuchoice": {
+    "prefix": "fmomuchoice",
+    "description": "ModelMultipleChoiceField",
+    "body": [
+      "${1:FIELDNAME} = forms.ModelMultipleChoiceField($2)"
+    ]
+  },
+  "fmuval": {
+    "prefix": "fmuval",
+    "description": "MultiValueField",
+    "body": [
+      "${1:FIELDNAME} = forms.MultiValueField($2)"
+    ]
+  },
+  "fmuchoice": {
+    "prefix": "fmuchoice",
+    "description": "MultipleChoiceField",
+    "body": [
+      "${1:FIELDNAME} = forms.MultipleChoiceField($2)"
+    ]
+  },
+  "fnullbool": {
+    "prefix": "fnullbool",
+    "description": "NullBooleanField",
+    "body": [
+      "${1:FIELDNAME} = forms.NullBooleanField($2)"
+    ]
+  },
+  "freg": {
+    "prefix": "freg",
+    "description": "RegexField",
+    "body": [
+      "${1:FIELDNAME} = forms.RegexField($2)"
+    ]
+  },
+  "fslug": {
+    "prefix": "fslug",
+    "description": "SlugField",
+    "body": [
+      "${1:FIELDNAME} = forms.SlugField($2)"
+    ]
+  },
+  "fsdatetime": {
+    "prefix": "fsdatetime",
+    "description": "SplitDateTimeField",
+    "body": [
+      "${1:FIELDNAME} = forms.SplitDateTimeField($2)"
+    ]
+  },
+  "ftime": {
+    "prefix": "ftime",
+    "description": "TimeField",
+    "body": [
+      "${1:FIELDNAME} = forms.TimeField($2)"
+    ]
+  },
+  "ftchoice": {
+    "prefix": "ftchoice",
+    "description": "TypedChoiceField",
+    "body": [
+      "${1:FIELDNAME} = forms.TypedChoiceField($2)"
+    ]
+  },
+  "ftmuchoice": {
+    "prefix": "ftmuchoice",
+    "description": "TypedMultipleChoiceField",
+    "body": [
+      "${1:FIELDNAME} = forms.TypedMultipleChoiceField($2)"
+    ]
+  },
+  "furl": {
+    "prefix": "furl",
+    "description": "URLField",
+    "body": [
+      "${1:FIELDNAME} = forms.URLField($2)"
+    ]
+  },
+  "model": {
+    "prefix": "model",
+    "description": "Model",
+    "body": [
+      "class ${1:MODELNAME}(models.Model):",
+      "\t$0",
+      "\tclass Meta:",
+      "\t\tverbose_name = \"$1\"",
+      "\t\tverbose_name_plural = \"$1s\"",
+      "",
+      "\tdef __str__(self):",
+      "\t\treturn super($1, self).__str__()",
+      ""
+    ]
+  },
+  "modelfull": {
+    "prefix": "modelfull",
+    "description": "Model",
+    "body": [
+      "class ${1:MODELNAME}(models.Model):",
+      "\t${2:# TODO: Define fields here}",
+      "",
+      "\tclass Meta:",
+      "\t\tverbose_name = \"$1\"",
+      "\t\tverbose_name_plural = \"$1s\"",
+      "",
+      "\tdef __str__(self):",
+      "\t\treturn super($1, self).__str__()",
+      "",
+      "\tdef save(self):",
+      "\t\treturn super($1, self).save()",
+      "",
+      "\tdef get_absolute_url(self):",
+      "\t\treturn ('')",
+      "",
+      "\t${3:# TODO: Define custom methods here}",
+      ""
+    ]
+  },
+  "mauto": {
+    "prefix": "mauto",
+    "description": "AutoField",
+    "body": [
+      "${1:FIELDNAME} = models.AutoField($2)"
+    ]
+  },
+  "mbigint": {
+    "prefix": "mbigint",
+    "description": "BigIntegerField",
+    "body": [
+      "${1:FIELDNAME} = models.BigIntegerField($2)"
+    ]
+  },
+  "mbool": {
+    "prefix": "mbool",
+    "description": "BooleanField",
+    "body": [
+      "${1:FIELDNAME} = models.BooleanField($2)"
+    ]
+  },
+  "mchar": {
+    "prefix": "mchar",
+    "description": "CharField",
+    "body": [
+      "${1:FIELDNAME} = models.CharField($2, max_length=${3:50})"
+    ]
+  },
+  "mcoseint": {
+    "prefix": "mcoseint",
+    "description": "CommaSeparatedIntegerField",
+    "body": [
+      "${1:FIELDNAME} = models.CommaSeparatedIntegerField($2)"
+    ]
+  },
+  "mdate": {
+    "prefix": "mdate",
+    "description": "DateField",
+    "body": [
+      "${1:FIELDNAME} = models.DateField($2)"
+    ]
+  },
+  "mdatetime": {
+    "prefix": "mdatetime",
+    "description": "DateTimeField",
+    "body": [
+      "${1:FIELDNAME} = models.DateTimeField($2)"
+    ]
+  },
+  "mdecimal": {
+    "prefix": "mdecimal",
+    "description": "DecimalField",
+    "body": [
+      "${1:FIELDNAME} = models.DecimalField(max_digits=${2:10}, decimal_places=${3:2})"
+    ]
+  },
+  "memail": {
+    "prefix": "memail",
+    "description": "EmailField",
+    "body": [
+      "${1:FIELDNAME} = models.EmailField($2)"
+    ]
+  },
+  "mfile": {
+    "prefix": "mfile",
+    "description": "FileField",
+    "body": [
+      "${1:FIELDNAME} = models.FileField($2)"
+    ]
+  },
+  "mfilepath": {
+    "prefix": "mfilepath",
+    "description": "FilePathField",
+    "body": [
+      "${1:FIELDNAME} = models.FilePathField($2)"
+    ]
+  },
+  "mfloat": {
+    "prefix": "mfloat",
+    "description": "FloatField",
+    "body": [
+      "${1:FIELDNAME} = models.FloatField($2)"
+    ]
+  },
+  "fk": {
+    "prefix": "fk",
+    "description": "ForeignKey",
+    "body": [
+      "${1:FIELDNAME} = models.ForeignKey($2)"
+    ]
+  },
+  "mip": {
+    "prefix": "mip",
+    "description": "IPAddressField",
+    "body": [
+      "${1:FIELDNAME} = models.IPAddressField($2)"
+    ]
+  },
+  "mimg": {
+    "prefix": "mimg",
+    "description": "ImageField",
+    "body": [
+      "${1:FIELDNAME} = models.ImageField($2)"
+    ]
+  },
+  "mint": {
+    "prefix": "mint",
+    "description": "IntegerField",
+    "body": [
+      "${1:FIELDNAME} = models.IntegerField($2)"
+    ]
+  },
+  "m2m": {
+    "prefix": "m2m",
+    "description": "ManyToManyField",
+    "body": [
+      "${1:FIELDNAME} = models.ManyToManyField($2)"
+    ]
+  },
+  "mnullbool": {
+    "prefix": "mnullbool",
+    "description": "NullBooleanField",
+    "body": [
+      "${1:FIELDNAME} = models.NullBooleanField($2)"
+    ]
+  },
+  "o2o": {
+    "prefix": "o2o",
+    "description": "OneToOneField",
+    "body": [
+      "${1:FIELDNAME} = models.OneToOneField($2)"
+    ]
+  },
+  "mphone": {
+    "prefix": "mphone",
+    "description": "PhoneNumberField",
+    "body": [
+      "${1:FIELDNAME} = models.PhoneNumberField($2)"
+    ]
+  },
+  "mposint": {
+    "prefix": "mposint",
+    "description": "PositiveIntegerField",
+    "body": [
+      "${1:FIELDNAME} = models.PositiveIntegerField($2)"
+    ]
+  },
+  "mpossmallint": {
+    "prefix": "mpossmallint",
+    "description": "PositiveSmallIntegerField",
+    "body": [
+      "${1:FIELDNAME} = models.PositiveSmallIntegerField($2)"
+    ]
+  },
+  "mslug": {
+    "prefix": "mslug",
+    "description": "SlugField",
+    "body": [
+      "${1:FIELDNAME} = models.SlugField($2)"
+    ]
+  },
+  "msmallint": {
+    "prefix": "msmallint",
+    "description": "SmallIntegerField",
+    "body": [
+      "${1:FIELDNAME} = models.SmallIntegerField($2)"
+    ]
+  },
+  "mtext": {
+    "prefix": "mtext",
+    "description": "TextField",
+    "body": [
+      "${1:FIELDNAME} = models.TextField($2)"
+    ]
+  },
+  "mtime": {
+    "prefix": "mtime",
+    "description": "TimeField",
+    "body": [
+      "${1:FIELDNAME} = models.TimeField($2)"
+    ]
+  },
+  "murl": {
+    "prefix": "murl",
+    "description": "URLField",
+    "body": [
+      "${1:FIELDNAME} = models.URLField($2)"
+    ]
+  },
+  "musstate": {
+    "prefix": "musstate",
+    "description": "USStateField",
+    "body": [
+      "${1:FIELDNAME} = models.USStateField($2)"
+    ]
+  },
+  "mxml": {
+    "prefix": "mxml",
+    "description": "XMLField",
+    "body": [
+      "${1:FIELDNAME} = models.XMLField($2)"
+    ]
+  },
+  "adminview": {
+    "prefix": "adminview",
+    "description": "Model Admin View",
+    "body": [
+      "class $1Admin(admin.ModelAdmin):",
+      "\t'''",
+      "\t\tAdmin View for $1",
+      "\t'''",
+      "\tlist_display = ('$2',)",
+      "\tlist_filter = ('$3',)",
+      "\tinlines = [",
+      "\t\t$4Inline,",
+      "\t]",
+      "\traw_id_fields = ('$5',)",
+      "\treadonly_fields = ('$6',)",
+      "\tsearch_fields = ['$7']",
+      "admin.site.register($1, $1Admin)"
+    ]
+  },
+  "createview": {
+    "prefix": "createview",
+    "description": "Generic Create View",
+    "body": [
+      "class ${1:MODEL_NAME}CreateView(CreateView):",
+      "\tmodel = $1",
+      "\ttemplate_name = \"${2:TEMPLATE_NAME}\""
+    ]
+  },
+  "deleteview": {
+    "prefix": "deleteview",
+    "description": "Generic Delete View",
+    "body": [
+      "class ${1:MODEL_NAME}DeleteView(DeleteView):",
+      "\tmodel = $1",
+      "\ttemplate_name = \"${2:TEMPLATE_NAME}\""
+    ]
+  },
+  "detailview": {
+    "prefix": "detailview",
+    "description": "Generic Detail View",
+    "body": [
+      "class ${1:MODEL_NAME}DetailView(DetailView):",
+      "\tmodel = $1",
+      "\ttemplate_name = \"${2:TEMPLATE_NAME}\""
+    ]
+  },
+  "listview": {
+    "prefix": "listview",
+    "description": "Generic List View",
+    "body": [
+      "class ${1:MODEL_NAME}ListView(ListView):",
+      "\tmodel = $1",
+      "\ttemplate_name = \"${2:TEMPLATE_NAME}\""
+    ]
+  },
+  "stackedinline": {
+    "prefix": "stackedinline",
+    "description": "Stacked Inline",
+    "body": [
+      "class $1Inline(admin.StackedInline):",
+      "\t'''",
+      "\tStacked Inline View for $1",
+      "\t'''",
+      "\tmodel = ${2:$1}",
+      "\tmin_num = ${3:3}",
+      "\tmax_num = ${4:20}",
+      "\textra = ${5:1}",
+      "\traw_id_fields = ($6,)"
+    ]
+  },
+  "tabularinline": {
+    "prefix": "tabularinline",
+    "description": "Tabular Inline",
+    "body": [
+      "class $1Inline(admin.TabularInline):",
+      "\t'''",
+      "\tTabular Inline View for $1",
+      "\t'''",
+      "\tmodel = ${2:$1}",
+      "\tmin_num = ${3:3}",
+      "\tmax_num = ${4:20}",
+      "\textra = ${5:1}",
+      "\traw_id_fields = ($6,)"
+    ]
+  },
+  "templateview": {
+    "prefix": "templateview",
+    "description": "Generic Template View",
+    "body": [
+      "class ${1:CLASS_NAME}(TemplateView):",
+      "\ttemplate_name = \"${2:TEMPLATE_NAME}\""
+    ]
+  },
+  "updateview": {
+    "prefix": "updateview",
+    "description": "Generic Update View",
+    "body": [
+      "class ${1:MODEL_NAME}UpdateView(UpdateView):",
+      "\tmodel = $1",
+      "\ttemplate_name = \"${2:TEMPLATE_NAME}\""
+    ]
+  },
+  "dispatch": {
+    "prefix": "dispatch",
+    "description": "Dispatch View method",
+    "body": [
+      "def dispatch(self, request, *args, **kwargs):",
+      "\treturn super(${1:CLASS_NAME}, self).dispatch(request, *args, **kwargs)"
+    ]
+  },
+  "context": {
+    "prefix": "context",
+    "description": "get_context_data view method",
+    "body": [
+      "def get_context_data(self, **kwargs):",
+      "\tkwargs['extra_context'] = ${1:'New Value'}",
+      "\treturn super(${2:CLASS_NAME}, self).get_context_data(**kwargs)"
+    ]
+  }
+}
